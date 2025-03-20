@@ -1,5 +1,7 @@
 # The Goal and Purpose of the Playground
 
+# This is a React.js project
+
 This is a learning and experimenting playground to build, use, and modify custom web components and showcase new learning, skills, and ideas.
 
 The plan is to practice and implement fundamental programming patterns in an intuitive learning environment.
