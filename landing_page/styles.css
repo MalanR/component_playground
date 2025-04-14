@@ -1,13 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
-    background-color: #f0f0f0;
+    height: 100%;
+    background-color: #1b1b1b;
 }
 
 header {
@@ -18,55 +20,63 @@ header {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    background-color: #333;
+    background-color: #1b1b1b;
     color: white;
     padding: 10px;
 }
 
-.burger-menu {
-    font-size: 30px;
-    cursor: pointer;
-}
-
-.side-nav {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #333;
-    overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 60px;
-}
-
-.side-nav a {
-    padding: 10px 15px;
-    text-decoration: none;
-    font-size: 25px;
-    color: white;
-    display: block;
-    transition: 0.3s;
-}
-
-.side-nav a:hover {
-    background-color: #575757;
-}
-
-.side-nav .close-btn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-}
-
 main {
     text-align: center;
-    margin-top: 100px;
+    margin-top: 70px; 
 }
 
 h1 {
-    font-size: 3em;
-    color: #333;
+    font-size: 5em;
+    background: linear-gradient(90deg, #82f369 0%, #91cfff 40%, #ffaacc 100%);
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: 'Poppins', sans-serif;
+}
+
+div .components {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0 15em 5em 15em;
+}
+
+div .components img {
+    flex: 0 0 calc(25% - 10px); 
+    margin: 5px;
+}
+
+div .components a {
+    display: inline-block;
+    flex: 0 0 calc(30% - 10px);
+    margin: 5px;
+    text-decoration: none;
+}
+
+div .components a img {
+    width: 100%;
+    height: auto;
+    border: 1px solid white;
+    transition: transform 0.3s ease;
+}
+
+div .components a:hover img {
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+img {
+    border: 1px solid white;
+    height: 30%;
+    width: 30%;
+}
+
+img :hover{
+    cursor: pointer;
 }

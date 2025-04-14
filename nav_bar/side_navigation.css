@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+
+:root {
+    --color-1: #fc9881;
+    --color-2: #96fda9;
+    --color-3: #8ea2fa;
+    --color-4: #f5fc98;
+    --color-5: #ff9cd4;
+    --color-6: #96fff8;
+    --color-7: #d297ff;
+}
+
+.burger-menu {
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.side-nav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color:  #1b1b1b;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.side-nav a {
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 25px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+}
+
+
+.side-nav .close-btn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+}

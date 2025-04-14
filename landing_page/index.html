@@ -5,22 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Playground</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/nav_bar/side_navigation.css">
 </head>
+
 <body>
     <header>
-        <div class="burger-menu" id="burger-menu">
+        <div class="burger-menu" id="burger-menu" aria-label="Open navigation menu">
             &#9776;
-        </div>
+        </div>        
         <nav class="side-nav" id="side-nav">
             <a href="javascript:void(0)" class="close-btn" id="close-btn">&times;</a>
-            <a href="#">Component 1</a>
-            <a href="#">Component 2</a>
-            <a href="#">Component 3</a>
+            <a href="/todo_list/todoApp.html" class="nav-components">Todo App</a>
+            <a href="#" class="nav-components">TicTacToe</a>
+            <a href="#" class="nav-components">Time Tracker</a>
+            <a href="#" class="nav-components">Calendar</a>
         </nav>
     </header>
     <main>
         <h1>Welcome to the Playground</h1>
     </main>
-    <script src="scripts.js"></script>
+    <div class="component-library">
+        <div class="components">
+            <a href="/todo_list/todoApp.html">
+                <img src="/todo_list/images/todo-app.png" alt="todo-app">
+            </a>
+            <a href="/todo_list/todoApp.html">
+                <img src="/todo_list/images/todo-app.png" alt="todo-app">
+            </a>
+            <a href="/todo_list/todoApp.html">
+                <img src="/todo_list/images/todo-app.png" alt="todo-app">
+            </a>
+            <a href="/todo_list/todoApp.html">
+                <img src="/todo_list/images/todo-app.png" alt="todo-app">
+            </a>
+            <a href="/todo_list/todoApp.html">
+                <img src="/todo_list/images/todo-app.png" alt="todo-app">
+            </a>
+            <a href="/todo_list/todoApp.html">
+                <img src="/todo_list/images/todo-app.png" alt="todo-app">
+            </a>
+        </div>
+    </div>
+    <script src="/nav_bar/side_navigation.js"></script>
 </body>
 </html>
