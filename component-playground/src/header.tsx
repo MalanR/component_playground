@@ -3,9 +3,13 @@ import SearchIcon from '@mui/icons-material/Search';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 
+type HeaderProps = {
+    selectedTab: string
+    onTabChange: (tab: string) => void
+}
 
 
-export function Header() {
+export function Header({ selectedTab, onTabChange }: HeaderProps) {
     return(
         <Box sx={{ margin: 2, justifyContent: 'space-between', alignItems: 'flex-end', display: 'flex', borderBottom: "1px solid lightgray", paddingBottom: 2}}>
             <Stack direction="column" spacing={2} sx={{ display:"flex", alignItems: "baseline" }}>
@@ -26,6 +30,8 @@ export function Header() {
                 />
             </Stack>
             <Tabs 
+                value={selectedTab}
+                onChange={(_, value: string) => onTabChange(value)}
                 sx={{ 
                     border: "1px solid lightgray", 
                     borderRadius: "1rem", 
@@ -37,17 +43,14 @@ export function Header() {
                         textTransform: 'none',
                         maxHeight: '1rem',
                         py: 0,
-                    },
-                    '& .Mui-selected' : {
-                        backgroundColor: 'primary.main',
-                        color: 'white'
                     }
                 }}>
-                <Tab label="All" />
-                <Tab label="UI" />
-                <Tab label="Data Display"/>
-                <Tab label="Feedback" />
-                <Tab label="Navigation" />
+                <Tab value="All" label="All" />
+                <Tab value="UI" label="UI" />
+                <Tab value="Data Display" label="Data Display"/>
+                <Tab value="Feedback" label="Feedback" />
+                <Tab value="Navigation" label="Navigation" />
+                <Tab value="Form" label="Form"/>
             </Tabs>
         </Box>
     )

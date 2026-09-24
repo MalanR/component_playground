@@ -1,15 +1,19 @@
 import Box from '@mui/material/Box';
-import { styled } from '@mui/material/styles';
-import Paper from '@mui/material/Paper';
 import  BasicChip  from "./components/chips"
+import MyForm from './components/tanstackForm'
 
 
-export function GalaryView() {
+type GalaryViewProps = {
+    selectedTab: string
+}
+
+export function GalaryView({ selectedTab }: GalaryViewProps) {
     return (
         <Box sx={{ padding: "1.25rem"}}>
+            {selectedTab === 'Form' ? <MyForm /> : 
             <Box>
-                <BasicChip />
-            </Box>
+                {BasicChip}
+            </Box>}
         </Box>
     )
 }
