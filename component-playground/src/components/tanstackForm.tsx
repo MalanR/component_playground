@@ -2,12 +2,26 @@
 import { useForm } from '@tanstack/react-form'
 import Box from '@mui/material/Box'
 import { Typography } from '@mui/material'
-import { useRef } from 'react'
+import { useRef, useReducer } from 'react'
+import type { AnyFieldApi } from '@tanstack/react-form'
+
+function FieldInfo({ field }: {field: AnyFieldApi}){
+    return(
+        <>
+            {field.store.state.meta.isTouched && !field.store.state.meta.isValid ? (
+                <em>{field.store.state.meta.errors.join(',')}</em>    
+            ) : null
+            }
+        </>
+    )
+}
 
 
 export default function MyForm(){
     const renderCount =useRef(0)
     renderCount.current += 1
+
+    const [, forceRender] = useReducer((x) => x + 1, 0)
 
     const form = useForm({
         defaultValues: {
@@ -18,6 +32,8 @@ export default function MyForm(){
             console.log(value)
         },
     })
+
+    const {firstName, lastName} = form.store.state.values
 
     return(
         <Box>
@@ -31,44 +47,82 @@ export default function MyForm(){
                 <Box>
                     <form.Field 
                         name="firstName"
-                        listeners={{
-                            onBlur: () => {
-                                console.log("first name is now blurred")
-                            }
+                        validators={{
+                            onBlurAsync:async({ value }) => {
+                                 if (!value){
+                                    return "A First name is required"
+                                }
+                                if (value.length < 3){
+                                    return"First name is too short"
+                                }
+                                    await new Promise((resolve) => setTimeout(resolve, 500))
+                                    return(
+                                    value.includes('error') && 'No "error" allowed in first name'
+                                )
+                            },
                         }}
-                        >
-                        {(field) => (
-                            <input
-                                placeholder="first name"
-                                value={field.state.value}
-                                onChange={(e) => field.handleChange(e.target.value)}
-                                onBlur={field.handleBlur}
-                            />
-                        )}
-                    </form.Field>
-
-                    <form.Field name=
-                        "lastName"
                         listeners={{
                             onBlur: () => {
                                 console.log("last name is now blurred")
+                                forceRender()
                             }
                         }}
+                        children={( field ) => {
+                            return (
+                                <>
+                                    <label htmlFor={field.name}>First Name</label>
+                                    <input
+                                    value={field.store.state.value}
+                                    onChange={(e) => field.handleChange(e.target.value)}
+                                    onBlur={field.handleBlur}
+                                    />
+                                    <FieldInfo field={field} />
+                                </>
+                            )
+                        }}
                         >
-                        {(field) => (
-                            <input
-                                placeholder="Last name"
-                                value={field.state.value}
-                                onChange={(e) => field.handleChange(e.target.value)}
-                                onBlur={field.handleBlur}
-                            />
-                        )}
+                    </form.Field>
+                    <form.Field 
+                        name="lastName"
+                        validators = {{
+                            onBlurAsync:async({ value }) => {
+                                if (!value){
+                                    return "A  Last name is required"
+                                }
+                                if (value.length < 3){
+                                    return "last name must be at least 3 charachter"
+                                }
+                                await new Promise((resolve) => setTimeout(resolve, 500))
+                                return(
+                                    value.includes('error') && 'No "error" allowed in last name'
+                                )
+                            }
+                        }}
+                        listeners={{
+                            onBlur: () => {
+                                console.log("last name is now blurred")
+                                forceRender()
+                            }
+                        }}children={( field ) => {
+                            return (
+                                <>
+                                    <label htmlFor={field.name}>Last Name</label>
+                                    <input
+                                    value={field.store.state.value}
+                                    onChange={(e) => field.handleChange(e.target.value)}
+                                    onBlur={field.handleBlur}
+                                    />
+                                    <FieldInfo field={field} />
+                                </>
+                            )
+                        }}
+                        >
                     </form.Field>
                     <button type="submit">Submit</button>
                 </Box>
                     <Box>
                         <Typography>
-                            Hello: {form.state.values.firstName} {form.state.values.lastName}
+                            Hello: {firstName} {lastName}
                         </Typography>
                         <Typography>
                             Renders : {renderCount.current}
