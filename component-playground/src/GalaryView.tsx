@@ -1,20 +1,26 @@
 import Box from '@mui/material/Box';
 import  BasicChip  from "./components/chips"
-import MyForm from './components/tanstackForm'
+import basicSwitch from "./components/switches"
+import BasicLinear from "./components/linearProgress"
+import { Stack } from '@mui/material';
 
 
-type GalaryViewProps = {
-    selectedTab: string
-}
-
-export function GalaryView({ selectedTab }: GalaryViewProps) {
+export function GalaryView(){
     return (
-        <Box sx={{ padding: "1.25rem"}}>
-            {selectedTab === 'Form' ? <MyForm /> : 
-            <Box>
-                {BasicChip}
-            </Box>}
-        </Box>
+        <Stack direction="row"  spacing={2}>
+                <Box>
+                    {BasicChip}
+                </Box>
+                <Box>
+                    {basicSwitch}
+                </Box>
+                <Box>
+                    <BasicLinear />
+                </Box>
+                <Box>
+                    {BasicChip}
+                </Box>
+        </Stack>
     )
 }
 

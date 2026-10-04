@@ -11,7 +11,7 @@ export function App() {
   return (
     <>
       <Header selectedTab={selectedTab} onTabChange={setSelectedTab} />
-      <GalaryView selectedTab={selectedTab} />
+      <GalaryView />
     </>
   )
 }

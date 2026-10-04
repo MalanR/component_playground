@@ -1,6 +1,7 @@
 
 import { useForm } from '@tanstack/react-form'
 import Box from '@mui/material/Box'
+import {Stack} from '@mui/material'
 import { Typography } from '@mui/material'
 import { useRef, useReducer } from 'react'
 import type { AnyFieldApi } from '@tanstack/react-form'
@@ -36,7 +37,7 @@ export default function MyForm(){
     const {firstName, lastName} = form.store.state.values
 
     return(
-        <Box>
+        <Box sx={{width: "20rem"}}>
             <h2>My Simple form</h2>
             <form
                 onSubmit={(e) => {
@@ -44,7 +45,8 @@ export default function MyForm(){
                     form.handleSubmit()
                 }}
             >
-                <Box>
+                <Box sx={{display: "flex", alignItems: "center", justifyContent: "center", border: "1px solid lightgray"}}>
+                    <Stack direction={'column'} sx={{ width: "12rem"}}>
                     <form.Field 
                         name="firstName"
                         validators={{
@@ -119,6 +121,7 @@ export default function MyForm(){
                         >
                     </form.Field>
                     <button type="submit">Submit</button>
+                    </Stack>
                 </Box>
                     <Box>
                         <Typography>
